@@ -73,7 +73,6 @@ public class ShiroConfig {
 
     /**
      * 1. 配置SecurityManager
-     * @return
      */
     @Bean
     public DefaultWebSecurityManager securityManager(){
@@ -86,7 +85,6 @@ public class ShiroConfig {
 
     /**
      * 2. 配置缓存
-     * @return
      */
 //    @Bean
 //    public CacheManager cacheManager(){
@@ -104,7 +102,6 @@ public class ShiroConfig {
 
     /**
      * 3. 配置Realm
-     * @return
      */
     @Bean
     public AuthorizingRealm realm(){
@@ -122,7 +119,6 @@ public class ShiroConfig {
 
     /**
      * 4. 配置LifecycleBeanPostProcessor，可以来自动的调用配置在Spring IOC容器中 Shiro Bean 的生命周期方法
-     * @return
      */
     @Bean
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
@@ -131,7 +127,6 @@ public class ShiroConfig {
 
     /**
      * 5. 启用IOC容器中使用Shiro的注解，但是必须配置第四步才可以使用
-     * @return
      */
     @Bean
     @DependsOn("lifecycleBeanPostProcessor")
@@ -141,7 +136,6 @@ public class ShiroConfig {
 
     /**
      * 6. 配置ShiroFilter
-     * @return
      */
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(){
@@ -179,14 +173,13 @@ public class ShiroConfig {
 
     /**
      * 配置RedisTemplate，充当数据库服务
-     * @return
      */
     @Bean
     public RedisTemplate<String,User> redisTemplate(RedisConnectionFactory connectionFactory){
         RedisTemplate<String,User> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(connectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<User>(User.class));
+        redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer<>(User.class));
         return redisTemplate;
     }
 

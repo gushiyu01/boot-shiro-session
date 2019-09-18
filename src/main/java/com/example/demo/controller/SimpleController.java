@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @program: boot-shiro
  * @description:
@@ -28,6 +30,7 @@ public class SimpleController {
     public ModelAndView index(){
         return new ModelAndView("index");
     }
+
 
     @RequestMapping("/login")
     public BaseResponse<String> login(@RequestBody User user){

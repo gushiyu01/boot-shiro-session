@@ -125,6 +125,7 @@ html,body{
     border-collapse: collapse;
 }
 .table td{
+    text-align: center;
     padding: 8px;
     border: 1px solid #ddd;
     border-collapse: collapse;
